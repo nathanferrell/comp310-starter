@@ -1,5 +1,5 @@
 
 add_executable(
-	factorial
-	factorial.c)
+	linear_search
+	linear_search.c)
 
