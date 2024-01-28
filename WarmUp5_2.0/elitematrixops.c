@@ -1,30 +1,25 @@
 #include <stdio.h>
 
-#define ROWS sizeof(matrix1) / sizeof(matrix1[0])
-#define COLS sizeof(matrix1[0]) / sizeof(matrix1[0][0])
-#define ROWSB sizeof(matrix2) / sizeof(matrix2[0])
-#define COLSB sizeof(matrix2[0]) / sizeof(matrix2[0][0])
-
-void addMatrices(int a[ROWS][COLS], int b[ROWSB][COLSB], int sum[ROWS][COLS]) {
-    if (ROWS != ROWSB || COLS != COLSB) {
+void addMatrices(int a[][COLS], int b[][COLSB], int sum[][COLS], int rowsA, int colsA, int rowsB, int colsB) {
+    if (rowsA != rowsB || colsA != colsB) {
         printf("Matrices cannot be added\n");
     } else {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLS; j++) {
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsA; j++) {
                 sum[i][j] = a[i][j] + b[i][j];
             }
         }
     }
 }
 
-void multiplyMatrices(int a[ROWS][COLS], int b[ROWSB][COLSB], int product[ROWS][COLSB]) {
-    if (COLS != ROWSB) {
+void multiplyMatrices(int a[][COLS], int b[][COLSB], int product[][COLSB], int rowsA, int colsA, int rowsB, int colsB) {
+    if (colsA != rowsB) {
         printf("Matrices cannot be multiplied\n");
     } else {
-        for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < COLSB; j++) {
+        for (int i = 0; i < rowsA; i++) {
+            for (int j = 0; j < colsB; j++) {
                 product[i][j] = 0;
-                for (int k = 0; k < COLS; k++) {
+                for (int k = 0; k < colsA; k++) {
                     product[i][j] += a[i][k] * b[k][j];
                 }
             }
@@ -44,19 +39,24 @@ void printMatrix(int *matrix, int rows, int cols) {
 int main() {
     int matrix1[][2] = {{1, 2}, {3, 4}};
     int matrix2[][3] = {{5, 6, 7}, {7, 8, 9}};
-    int sum[ROWS][COLS];
-    int product[ROWS][COLSB];
+    int rowsA = sizeof(matrix1) / sizeof(matrix1[0]);
+    int colsA = sizeof(matrix1[0]) / sizeof(matrix1[0][0]);
+    int rowsB = sizeof(matrix2) / sizeof(matrix2[0]);
+    int colsB = sizeof(matrix2[0]) / sizeof(matrix2[0][0]);
 
-    addMatrices(matrix1, matrix2, sum);
-    if (ROWS == ROWSB && COLS == COLSB) {
+    int sum[rowsA][colsA];
+    int product[rowsA][colsB];
+
+    addMatrices(matrix1, matrix2, sum, rowsA, colsA, rowsB, colsB);
+    if (rowsA == rowsB && colsA == colsB) {
         printf("Matrix Addition:\n");
-        printMatrix((int *)sum, ROWS, COLS);
+        printMatrix((int *)sum, rowsA, colsA);
     }
 
-    multiplyMatrices(matrix1, matrix2, product);
-    if (COLS == ROWSB) {
+    multiplyMatrices(matrix1, matrix2, product, rowsA, colsA, rowsB, colsB);
+    if (colsA == rowsB) {
         printf("Matrix Multiplication:\n");
-        printMatrix((int *)product, ROWS, COLSB);
+        printMatrix((int *)product, rowsA, colsB);
     }
 
     return 0;
