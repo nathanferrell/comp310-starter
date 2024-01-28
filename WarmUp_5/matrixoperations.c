@@ -2,7 +2,7 @@
 
 #define ROWS 2
 #define COLS 3
-#define ROWSB 2
+#define ROWSB 3
 #define COLSB 3
 
 void addMatrices(int a[ROWS][COLS], int b[ROWSB][COLSB], int sum[ROWS][COLS]) {
@@ -43,7 +43,7 @@ void printMatrix(int *matrix, int rows, int cols) {
 
 int main() {
     int matrix1[ROWS][COLS] = {{1, 2, 3}, {3, 3, 4}};
-    int matrix2[ROWSB][COLSB] = {{5, 6, 7}, {7, 8, 9}};
+    int matrix2[ROWSB][COLSB] = {{5, 6, 7}, {7, 8, 9}, {10, 11 ,12}};
     int sum[ROWS][COLS];
     int product[ROWS][COLSB];
 
