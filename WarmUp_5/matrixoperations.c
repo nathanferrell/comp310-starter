@@ -41,10 +41,10 @@ void printMatrix(int matrix[ROWS][COLS]) {
 
 int main() {
     int matrix1[ROWS][COLS] = {{1, 2}, {3, 4}};
-    int matrix2[ROWS][COLS] = {{5, 6}, {7, 8, 9}};
+    int matrix2[ROWSB][COLSB] = {{5, 6, 7}, {7, 8, 9}};
 
     int sum[ROWS][COLS];
-    int product[ROWS][COLS];
+    int product[ROWS][COLSB];
 
     addMatrices(matrix1, matrix2, sum);
     multiplyMatrices(matrix1, matrix2, product);
