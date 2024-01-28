@@ -21,9 +21,9 @@ if(COLS!=ROWSB){
     printf("Matrices cannot be multiplied");
 }else{
     for (int i = 0; i < ROWS; i++) {
-        for (int j = 0; j < COLS; j++) {
+        for (int j = 0; j < COLSB; j++) {
             product[i][j] = 0;
-            for (int k = 0; k < COLS; k++) { // Assuming square matrices for simplicity
+            for (int k = 0; k < COLSB; k++) { // Assuming square matrices for simplicity
                 product[i][j] += a[i][k] * b[k][j];
             }
         }
