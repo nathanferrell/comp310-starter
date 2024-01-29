@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int main() {
-    char filename[] = "~/workspace/comp310-starter/WarmUp_9/example.txt";
+    char filename[] = "/WarmUp_9/example.txt";
 
     // Open the file for writing
     FILE *fw = fopen(filename, "w");
